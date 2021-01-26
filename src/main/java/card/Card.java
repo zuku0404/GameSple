@@ -1,3 +1,6 @@
+package card;
+
+import coin.Color;
 import lombok.Getter;
 
 import java.util.HashMap;
@@ -11,7 +14,7 @@ public class Card {
     private Map<Color, Integer> cardCost = new HashMap<>();
     private String imageCard;
 
-    public Card(Color cardColor, int group,int points, int whiteCoinsCost, int redCoinCost, int greenCoinCost, int blueCoinsCost, int blackCoinsCost,String imageCard) {
+    public Card(Color cardColor, int group, int points, int whiteCoinsCost, int redCoinCost, int greenCoinCost, int blueCoinsCost, int blackCoinsCost, String imageCard) {
         this.cardColor = cardColor;
         this.points = points;
         this.group = group;

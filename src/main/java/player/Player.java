@@ -1,3 +1,8 @@
+package player;
+
+import card.Card;
+import coin.Color;
+import hero.Hero;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -32,6 +37,15 @@ public class Player {
 
         }
     }
+    public void takeHero(Hero selectedHero){
+        heroList.add(selectedHero);
+        points+=selectedHero.getPoints();
+    }
+    public void takeCard(Card selectedCard){
+        cardsUser.replace(selectedCard.getCardColor(), cardsUser.get(selectedCard.getCardColor()) + 1);
+        points += selectedCard.getPoints();
+    }
+
     public void setPoints(int points) {
         this.points = points;
     }

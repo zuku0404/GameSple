@@ -1,25 +1,34 @@
+package game;
+
+import card.Card;
+import hero.Hero;
+import player.Player;
+
 import java.util.Map;
+
 public class GameStatistic {
     public void showPlayerStatus(Player player) {
-    System.out.println("Player number: " + player.getPlayerNumber());
-    System.out.println("\nActual status of player: ");
-    System.out.println("you have " + player.getPoints() + " points");
-    System.out.println("your cards: " + player.getCardsUser().entrySet());
-    System.out.println("your coins: " + player.getCoinsUser().entrySet());
-    System.out.println("number of hero :  " + player.getHeroList().size() );
-    System.out.println("your reserved cards: ");
-    showCardsStatistic(player.getReservedCardUser());
-}
+        System.out.println("player.Player number: " + player.getPlayerNumber() + "\n" +
+                "\nActual status of player: " +
+                "\nyou have " + player.getPoints() + " points" +
+                "\nyour cards: " + player.getCardsUser().entrySet() +
+                "\nyour coins: " + player.getCoinsUser().entrySet() +
+                "\nnumber of hero :  " + player.getHeroList().size() +
+                "\nyour reserved cards: ");
+        showCardsStatistic(player.getReservedCardUser());
+    }
+
     public void showTableStatus(Table table) {
-        System.out.println("\nTABLE: ");
-        System.out.print("Coins on the table:\n ");
-        System.out.println(table.getCoinsOnTableMap().entrySet());
-        System.out.print("\nCards on the table:\n ");
-        showCardsStatistic(table.getCardsOnTableMap());
+        System.out.println("\nTABLE: " +
+                "\nCoins on the table:\n " +
+                table.getCoinsOnTableMap().entrySet() +
+                "\nCards on the table:\n ");
+                showCardsStatistic(table.getCardsOnTableMap());
         System.out.println("Heroes on the table");
         showHeroesStatistic(table.getHeroesOnTableMap());
-        }
-    private void showCardsStatistic(Map<Integer, Card> mapOfCardToDisplay){
+    }
+
+    private void showCardsStatistic(Map<Integer, Card> mapOfCardToDisplay) {
         System.out.println("-------------------------------------------------------------------------------------------------");
         System.out.printf("%10s %10s %10s %10s %30s", "NUMBER", "COLOR", "POINTS", "GROUP", "COST");
         System.out.println();
@@ -34,7 +43,8 @@ public class GameStatistic {
         System.out.println("-------------------------------------------------------------------------------------------------");
         System.out.println();
     }
-    private void showHeroesStatistic (Map<Integer, Hero> mapOfHeroesToDisplay){
+
+    private void showHeroesStatistic(Map<Integer, Hero> mapOfHeroesToDisplay) {
         System.out.println("-------------------------------------------------------------------------------------------------");
         System.out.printf("%10s %13s %30s", "NUMBER", "POINTS", "COST");
         System.out.println();

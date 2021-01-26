@@ -1,3 +1,7 @@
+package coin;
+
+import player.Player;
+
 public class CoinsCounter {
     public int checkActualTotalNumberOfCoinsPosesByPlayer(Player currentPlayer) {
         int numberAllPlayerCoins = 0;

@@ -1,3 +1,6 @@
+package hero;
+
+import coin.Color;
 import lombok.Getter;
 
 import java.util.HashMap;

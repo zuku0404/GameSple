@@ -1,4 +1,6 @@
-import java.util.List;
+package main;
+
+import game.Game;
 
 public class Main {
 

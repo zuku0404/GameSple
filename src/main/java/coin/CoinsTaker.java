@@ -1,26 +1,32 @@
+package coin;
+
+import game.ColorsWithoutGold;
+import game.GameSetter;
+import game.Table;
+import lombok.extern.slf4j.Slf4j;
+import player.Player;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
+@Slf4j
 public class CoinsTaker {
     private int minimalAmountCoinsOnStackOnTable;
     private int amountCoinsToChangeFromSingleStack;
     private int maxAmountCoinsToTakeInSingleMove;
     private Player currentPlayer;
     private Table table;
-    private Map<Integer, Color> coinsIdMap;
     private Scanner scanner = new Scanner(System.in);
 
     public CoinsTaker(int minimalAmountCoinsOnStackOnTable, int amountCoinsToChangeFromSingleStack,
-                      int maxAmountCoinsToTakeInSingleMove, Table table, Player currentPlayer, Map<Integer, Color> coinsIdMap) {
+                      int maxAmountCoinsToTakeInSingleMove, Table table, Player currentPlayer) {
 
         this.minimalAmountCoinsOnStackOnTable = minimalAmountCoinsOnStackOnTable;
         this.amountCoinsToChangeFromSingleStack = amountCoinsToChangeFromSingleStack;
         this.maxAmountCoinsToTakeInSingleMove = maxAmountCoinsToTakeInSingleMove;
         this.table = table;
         this.currentPlayer = currentPlayer;
-        this.coinsIdMap = coinsIdMap;
     }
 
     public void chooseAndTakeCoins() {
@@ -63,10 +69,10 @@ public class CoinsTaker {
         List<Color> selectedCoinsList = new ArrayList<>();
         while (selectedCoinsList.size() < numberOfStackChanged) {
             try {
-                System.out.print("Enter number of coin: ");
+                System.out.println("Enter number of coin: ");
                 int numberOfCoin = scanner.nextInt();
                 Color colorSelectedCoin;
-                if ((colorSelectedCoin = coinsIdMap.get(numberOfCoin)) != null) {
+                if ((colorSelectedCoin = GameSetter.setCoinsWithIdMap().get(numberOfCoin)) != null) {
                     selectedCoinsList.add(selectCoin(possibleCoinsToTakeList, colorSelectedCoin));
                 } else throw new NullPointerException("That coin not exist");
             } catch (IllegalArgumentException ex) {

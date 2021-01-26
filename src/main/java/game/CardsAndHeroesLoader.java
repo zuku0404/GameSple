@@ -1,8 +1,15 @@
+package game;
+
+import card.Card;
+import coin.Color;
+import hero.Hero;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class CardsAndHeroesLoader {
+    private CardsAndHeroesLoader(){}
     public static List<Card> createCardListFirstGroup() {
         List<Card> firstGroupCards = new ArrayList<>();
         Card black11 = new Card(Color.BLACK, 1, 0, 1,

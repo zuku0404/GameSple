@@ -1,7 +1,12 @@
+package game;
+
+import coin.Color;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ColorsWithoutGold {
+    private ColorsWithoutGold(){}
     public static List<Color> listOfColorsWithoutGold() {
         List<Color> colorsWithoutGold = new ArrayList<>();
         for (Color color : Color.values()) {

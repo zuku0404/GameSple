@@ -1,3 +1,7 @@
+package game;
+
+import coin.Color;
+
 import java.util.*;
 
 public class GameSetter {
@@ -17,7 +21,7 @@ public class GameSetter {
             }
         return coinsOnTable;
     }
-    public Map<Integer, Color> setCoinsWithIdMap() {
+    public static Map<Integer, Color> setCoinsWithIdMap() {
         Map<Integer, Color> coinsIdMap = new HashMap<>();
         int idNumber = 1;
         for (Color color : Color.values()) {

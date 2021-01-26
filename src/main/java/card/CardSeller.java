@@ -1,3 +1,9 @@
+package card;
+
+import coin.Color;
+import game.ColorsWithoutGold;
+import game.Table;
+import player.Player;
 
 import java.util.List;
 import java.util.Map;
@@ -5,12 +11,10 @@ import java.util.Map;
 public class CardSeller {
     private Table table;
     private Player currentPlayer;
-    private CardTaker cardTaker;
 
-    public CardSeller(Table table, Player currentPlayer, CardTaker cardTaker){
+    public CardSeller(Table table, Player currentPlayer){
         this.table = table;
         this.currentPlayer = currentPlayer;
-        this.cardTaker = cardTaker;
     }
     public void buySelectedCard(Card selectedCard) {
         List<Color> colorsListWithoutGold = ColorsWithoutGold.listOfColorsWithoutGold();

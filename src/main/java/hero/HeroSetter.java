@@ -1,3 +1,5 @@
+package hero;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +22,7 @@ public class HeroSetter {
         }
         return heroesOnTable;
     }
-    public Hero takeHeroesFromStack(List<Hero> heroesOnStacks) {
+    private Hero takeHeroesFromStack(List<Hero> heroesOnStacks) {
         int indexOfHero = random.nextInt(heroesOnStacks.size());
         Hero returnedHero = heroesOnStacks.get(indexOfHero);
         heroesOnStacks.remove(returnedHero);

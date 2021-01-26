@@ -1,4 +1,7 @@
-import java.util.Map;
+package coin;
+
+import game.Table;
+import player.Player;
 
 public class GoldCoinTaker {
 

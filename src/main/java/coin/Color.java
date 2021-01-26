@@ -1,3 +1,5 @@
+package coin;
+
 public enum Color {
     WHITE ("white"),
     BLUE("blue"),
