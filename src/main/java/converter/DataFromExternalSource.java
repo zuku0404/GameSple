@@ -1,4 +1,4 @@
-package game;
+package converter;
 
 import card.Card;
 import coin.Color;
@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CardsAndHeroesLoader {
-    private CardsAndHeroesLoader(){}
+public class DataFromExternalSource {
+    private DataFromExternalSource(){}
     public static List<Card> createCardListFirstGroup() {
         List<Card> firstGroupCards = new ArrayList<>();
         Card black11 = new Card(Color.BLACK, 1, 0, 1,
@@ -300,30 +300,30 @@ public class CardsAndHeroesLoader {
                 0, 3, 3, "pictures/Hero2.JPG");
         Hero tempHero3 = new Hero(3, 4, 0,
                 0, 0, 4, "pictures/Hero3.JPG");
-        Hero Hero4 = new Hero(3, 4, 0,
+        Hero tempHero4 = new Hero(3, 4, 0,
                 0, 4, 0, "pictures/Hero4.JPG");
-        Hero Hero5 = new Hero(3, 0, 0,
+        Hero tempHero5 = new Hero(3, 0, 0,
                 4, 4, 0, "pictures/Hero5.JPG");
-        Hero Hero6 = new Hero(3, 3, 0,
+        Hero tempHero6 = new Hero(3, 3, 0,
                 3, 3, 0, "pictures/Hero6.JPG");
-        Hero Hero7 = new Hero(3, 3, 3,
+        Hero tempHero7 = new Hero(3, 3, 3,
                 0, 0, 3, "pictures/Hero7.JPG");
-        Hero Hero8 = new Hero(3, 0, 3,
+        Hero tempHero8 = new Hero(3, 0, 3,
                 3, 0, 3, "pictures/Hero8.JPG");
-        Hero Hero9 = new Hero(3, 0, 4,
+        Hero tempHero9 = new Hero(3, 0, 4,
                 0, 0, 4, "pictures/Hero9.JPG");
-        Hero Hero10 = new Hero(3, 0, 4,
+        Hero tempHero10 = new Hero(3, 0, 4,
                 4, 0, 0, "pictures/Hero10.JPG");
         heroesList.add(tempHero1);
         heroesList.add(tempHero2);
         heroesList.add(tempHero3);
-        heroesList.add(Hero4);
-        heroesList.add(Hero5);
-        heroesList.add(Hero6);
-        heroesList.add(Hero7);
-        heroesList.add(Hero8);
-        heroesList.add(Hero9);
-        heroesList.add(Hero10);
+        heroesList.add(tempHero4);
+        heroesList.add(tempHero5);
+        heroesList.add(tempHero6);
+        heroesList.add(tempHero7);
+        heroesList.add(tempHero8);
+        heroesList.add(tempHero9);
+        heroesList.add(tempHero10);
         return heroesList;
     }
 }

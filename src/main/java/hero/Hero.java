@@ -21,4 +21,8 @@ public class Hero {
         costHero.put(Color.BLUE, blueCardsCost);
         costHero.put(Color.WHITE, whiteCardsCost);
     }
+
+    public int getNumberOfColorCostHero(Color color){
+        return costHero.get(color);
+    }
 }

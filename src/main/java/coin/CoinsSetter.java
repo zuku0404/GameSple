@@ -1,13 +1,11 @@
-package game;
-
-import coin.Color;
+package coin;
 
 import java.util.*;
 
-public class GameSetter {
+public class CoinsSetter {
+    private Map<Color, Integer> coinsOnTable = new HashMap<>();
 
     public Map<Color, Integer> setCoinsOnStart(int numberOfPlayer) {
-        Map<Color, Integer> coinsOnTable = new HashMap<>();
         int numberOfCoins;
         if (numberOfPlayer == 2 || numberOfPlayer == 3)
             numberOfCoins = numberOfPlayer + 2;
@@ -21,14 +19,4 @@ public class GameSetter {
             }
         return coinsOnTable;
     }
-    public static Map<Integer, Color> setCoinsWithIdMap() {
-        Map<Integer, Color> coinsIdMap = new HashMap<>();
-        int idNumber = 1;
-        for (Color color : Color.values()) {
-            coinsIdMap.put(idNumber, color);
-            idNumber++;
-        }
-        return coinsIdMap;
-    }
-
 }

@@ -1,11 +1,17 @@
 package main;
 
+import exceptions.InvalidValueException;
 import game.Game;
 
 public class Main {
 
     public static void main(String[] args) {
-        Game game = new Game(2);
-        game.runGame();
+        try {
+            Game game = new Game(2);
+            game.runGame();
+        }catch (InvalidValueException ex){
+            System.out.println(ex.getMessage());
+        }
+
     }
 }

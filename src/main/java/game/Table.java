@@ -1,12 +1,13 @@
 package game;
 
 import card.Card;
-import card.CardFromStackTaker;
+import card.CardSetter;
 import coin.Color;
 import hero.Hero;
 import lombok.Getter;
 
 import java.util.Map;
+import java.util.Optional;
 
 @Getter
 public class Table {
@@ -20,17 +21,24 @@ public class Table {
         this.heroesOnTableMap = heroesOnTableMap;
     }
 
-    public void removeHeroFromTable(int numberOfHero) {
+    public void removeHero (int numberOfHero) {
         heroesOnTableMap.remove(numberOfHero);
     }
 
-    public void putNextCardOnTable(Card selectedCard, int selectedCardNumber){
-        CardFromStackTaker cardFromStackTaker = new CardFromStackTaker();
-        if (cardFromStackTaker.takeCard(selectedCard) != null) {
-                        cardsOnTableMap.replace(selectedCardNumber, cardFromStackTaker.takeCard(selectedCard));
-                    } else {
-                        cardsOnTableMap.remove(selectedCardNumber);
-                    }
+    public void replaceSelectedCard(Card selectedCard, int selectedCardNumber) {
+        CardSetter cardSetter = new CardSetter();
+        Optional<Card> card = cardSetter.takeCard(selectedCard);
+        if (card.isPresent()) {
+            cardsOnTableMap.replace(selectedCardNumber, card.get());
+        } else {
+            cardsOnTableMap.remove(selectedCardNumber);
+        }
+    }
+    public int getNumberOfSelectedColorCoins(Color color){
+        return coinsOnTableMap.get(color);
+    }
+    public void setNumberOfSelectedColorCoins(Color color, int numberOfCoins){
+        coinsOnTableMap.replace(color,numberOfCoins);
     }
 }
 

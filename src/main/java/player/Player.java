@@ -5,10 +5,7 @@ import coin.Color;
 import hero.Hero;
 import lombok.Getter;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Getter
 public class Player {
@@ -34,7 +31,6 @@ public class Player {
                 coinsUser.put(color, 0);
                 totalNumberOfEachColors.put(color, cardsUser.get(color) + coinsUser.get(color));
             }
-
         }
     }
     public void takeHero(Hero selectedHero){
@@ -45,8 +41,18 @@ public class Player {
         cardsUser.replace(selectedCard.getCardColor(), cardsUser.get(selectedCard.getCardColor()) + 1);
         points += selectedCard.getPoints();
     }
+    public int calculateActualNumberOfPlayerCoins() {
+        int numberAllPlayerCoins = 0;
+        for(Map.Entry<Color, Integer> color : coinsUser.entrySet()){
+            numberAllPlayerCoins += coinsUser.get(color.getKey());
+        }
+        return numberAllPlayerCoins;
+    }
 
-    public void setPoints(int points) {
-        this.points = points;
+    public int getNumberOfSelectedColorCoins(Color color){
+        return coinsUser.get(color);
+    }
+    public void setNumberOfSelectedColorCoins(Color color, int numberOfCoins){
+        coinsUser.replace(color,numberOfCoins);
     }
 }
