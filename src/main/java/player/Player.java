@@ -38,7 +38,7 @@ public class Player {
         points+=selectedHero.getPoints();
     }
     public void takeCard(Card selectedCard){
-        cardsUser.replace(selectedCard.getCardColor(), cardsUser.get(selectedCard.getCardColor()) + 1);
+        cardsUser.replace(selectedCard.getColor(), cardsUser.get(selectedCard.getColor()) + 1);
         points += selectedCard.getPoints();
     }
     public int calculateActualNumberOfPlayerCoins() {

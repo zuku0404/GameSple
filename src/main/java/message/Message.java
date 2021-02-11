@@ -25,7 +25,7 @@ public enum Message {
             "\nyour reserved cards: "),
     DASHED_LINE ("-------------------------------------------------------------------------------------------------"),
     CARD_HEADER_TABLE( " %10s %10s %10s %10s %30s"),
-    CARD_STATISTIC("%7s %13s %7s %11s %50s "),
+    CARD_STATISTIC("%7s %13s %7s %11s %50s"),
     HERO_HEADER_TABLE( " %10s %13s %30s"),
     HERO_STATISTIC("%7s %13s %50s "),
     TABLE_STATISTIC_FIRST_PART("\nTABLE: " +

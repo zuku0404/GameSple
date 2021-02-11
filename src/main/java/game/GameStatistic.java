@@ -7,6 +7,7 @@ import message.Messenger;
 import player.Player;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class GameStatistic {
@@ -31,9 +32,9 @@ public class GameStatistic {
         Messenger.display(Message.CARD_HEADER_TABLE, "NUMBER", "COLOR", "POINTS", "GROUP", "COST");
         Messenger.display(Message.DASHED_LINE);
         for(Map.Entry<Integer,Card> cardOnTable : mapOfCardToDisplay.entrySet()){
-            Messenger.display(Message.CARD_STATISTIC, String.valueOf(cardOnTable.getKey()), String.valueOf(mapOfCardToDisplay.get(cardOnTable.getKey()).getCardColor()),
+            Messenger.display(Message.CARD_STATISTIC, String.valueOf(cardOnTable.getKey()), String.valueOf(mapOfCardToDisplay.get(cardOnTable.getKey()).getColor()),
                     String.valueOf(mapOfCardToDisplay.get(cardOnTable.getKey()).getPoints()), String.valueOf(mapOfCardToDisplay.get(cardOnTable.getKey()).getGroup()),
-                    mapOfCardToDisplay.get(cardOnTable.getKey()).getCardCost().entrySet().toString());
+                    mapOfCardToDisplay.get(cardOnTable.getKey()).getCost().entrySet().toString());
         }
         Messenger.display(Message.DASHED_LINE);
     }
@@ -50,8 +51,8 @@ public class GameStatistic {
         Messenger.display(Message.DASHED_LINE);
     }
 
-    public static int showDecisionOption() {
+    public static Optional<Movements> showDecisionOption() {
         Messenger.display(Message.DECISION_WINDOW);
-        return scanner.nextInt();
+        return Movements.choseMove(scanner.nextInt());
     }
 }

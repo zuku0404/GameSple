@@ -51,8 +51,11 @@ public class Game {
     private boolean makeSingleMove(Player currentPlayer) {
         gameStatistic.showPlayerStatus(currentPlayer);
         gameStatistic.showTableStatus(table);
-        int decisionNumber = GameStatistic.showDecisionOption();
-        playerMovementOption.selectMove(currentPlayer, decisionNumber);
+        boolean isActionCompleteSuccessful = false;
+        while (!isActionCompleteSuccessful) {
+            Optional<Movements> movement = GameStatistic.showDecisionOption();
+            isActionCompleteSuccessful = playerMovementOption.selectMove(currentPlayer, movement);
+        }
         return checkIsFinalRound(currentPlayer);
     }
 

@@ -2,6 +2,7 @@ package coin;
 
 import exceptions.InvalidActionException;
 import exceptions.InvalidValueException;
+import game.Movements;
 import game.Table;
 import lombok.extern.slf4j.Slf4j;
 import message.Message;
@@ -14,30 +15,20 @@ import java.util.Scanner;
 
 @Slf4j
 public class CoinsTaker {
-    private int minimalAmountCoinsOnStackOnTable;
-    private int amountCoinsToChangeFromSingleStack;
-    private int maxNumberCoinsToTakeInSingleMove;
     private Player currentPlayer;
     private Table table;
     private Scanner scanner = new Scanner(System.in);
+    private ConditionsCoins conditionsCoins;
+    private int maxNumberCoinsPosesByPlayer;
 
-    public CoinsTaker(int minimalAmountCoinsOnStackOnTable, int amountCoinsToChangeFromSingleStack,
-                      int maxNumberCoinsToTakeInSingleMove, Table table, Player currentPlayer) {
-
-        this.minimalAmountCoinsOnStackOnTable = minimalAmountCoinsOnStackOnTable;
-        this.amountCoinsToChangeFromSingleStack = amountCoinsToChangeFromSingleStack;
-        this.maxNumberCoinsToTakeInSingleMove = maxNumberCoinsToTakeInSingleMove;
+    public CoinsTaker(Table table, Player currentPlayer, Movements move) {
         this.table = table;
         this.currentPlayer = currentPlayer;
-    }
-
-    public CoinsTaker(Player currentPlayer, Table table) {
-        this.currentPlayer = currentPlayer;
-        this.table = table;
+        conditionsCoins = new ConditionsCoins(move);
+        this.maxNumberCoinsPosesByPlayer = conditionsCoins.getMaxNumberCoinsPosesByPlayer();
     }
 
     public void takeGoldCoin() {
-        int maxNumberCoinsPosesByPlayer = 10;
         int actualNumberOfPlayerCoins = currentPlayer.calculateActualNumberOfPlayerCoins();
         int numberOfPlayerGoldCoins = currentPlayer.getNumberOfSelectedColorCoins(Color.GOLD);
         int numberOfGoldCoinsOnTable = table.getNumberOfSelectedColorCoins(Color.GOLD);
@@ -49,11 +40,11 @@ public class CoinsTaker {
     }
 
     public void selectAndTakeCoins() throws InvalidValueException {
-        List<Color> possibleCoinsToTake = createListCoinsToTake(minimalAmountCoinsOnStackOnTable);
-        int numberOfStackChanged = checkNumberOfStackChanged(possibleCoinsToTake, maxNumberCoinsToTakeInSingleMove,
-                amountCoinsToChangeFromSingleStack);
+        List<Color> possibleCoinsToTake = createListCoinsToTake(conditionsCoins.getMinimalNumberCoinsOnStackOnTable());
+        int numberOfStackChanged = checkNumberOfStackChanged(possibleCoinsToTake, conditionsCoins.getMaxAmountCoinsToTakeInSingleMove(),
+                conditionsCoins.getAmountCoinsToChangeFromSingleStack());
         List<Color> selectedCoinsList = takeCoinsFromStack(numberOfStackChanged, possibleCoinsToTake);
-        relocateCoinsBetweenPlayerAndTable(selectedCoinsList, amountCoinsToChangeFromSingleStack);
+        relocateCoinsBetweenPlayerAndTable(selectedCoinsList, conditionsCoins.getAmountCoinsToChangeFromSingleStack());
     }
 
     private List<Color> createListCoinsToTake(int minimalAmountCoinsOnStackOnTable) {
@@ -69,8 +60,7 @@ public class CoinsTaker {
 
     private int checkNumberOfStackChanged(List<Color> possibleCoinsToTakeList, int maxAmountCoinsToTakeInSingleMove,
                                           int amountCoinsToChangeFromSingleStack) throws InvalidValueException {
-        int maxNumberCoinsPosesByPlayerInGame = 10;
-        int differentBetweenMaxAndActualNumberOfCoin = maxNumberCoinsPosesByPlayerInGame - currentPlayer.calculateActualNumberOfPlayerCoins();
+        int differentBetweenMaxAndActualNumberOfCoin = maxNumberCoinsPosesByPlayer - currentPlayer.calculateActualNumberOfPlayerCoins();
 
         if (differentBetweenMaxAndActualNumberOfCoin < amountCoinsToChangeFromSingleStack || possibleCoinsToTakeList.isEmpty()) {
             throw new InvalidValueException("You can not select this option you have too much coins or on the table " +
@@ -120,6 +110,4 @@ public class CoinsTaker {
             currentPlayer.setNumberOfSelectedColorCoins(color, actualNumberCoinsInSelectedColorPlayer + amountCoinsToChangeFromSingleStack);
         }
     }
-
-
 }

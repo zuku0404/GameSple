@@ -1,15 +1,14 @@
 package card;
 
 import coin.Color;
-import org.junit.Assert;
-import org.junit.Before;
-import org.mockito.Mockito;
-import org.testng.annotations.Test;
+import game.Table;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
 import player.Player;
 
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 
@@ -21,37 +20,56 @@ public class CardDealerTest {
         Player currentPlayer = createPlayerMock();
         CardDealer cardDealer = new CardDealer(null, currentPlayer);
         //when
-        Map<Color, Integer> cardCost = createCardMock().getCardCost();
-        Map<Color, Integer> cardCost2 = createCardMock().getCardCost();
+
         boolean result = cardDealer.hasPlayerEnoughColorPointsToBuyCard(cardCost);
 
-        boolean result2 = cardDealer.hasPlayerEnoughColorPointsToBuyCard(cardCost2);
         //then
-        Assert.assertTrue(result);
-        Assert.assertTrue(result2);
-    }
-    Card mock = Mockito.mock(Card.class);
-    private Player createPlayerMock() {
-        Player mock = Mockito.mock(Player.class);
-        Mockito.when(mock.getTotalNumberOfEachColors()).thenReturn(Map.of(Color.RED, 2, Color.GREEN, 2, Color.BLACK, 3, Color.BLUE, 4,
-                Color.WHITE, 3, Color.GOLD, 3));
-        return mock;
+        Assertions.assertEquals(expected, result);
+
     }
 
-    private Card createCardMock() {
-        List<Map<Color, Integer>> cardCostList = createListCardCostExample();
-        Mockito.when(mock.getCardCost()).thenReturn(cardCostList.get(1)).thenReturn(cardCostList.get(0));
-        return mock;
+    private static Stream<Arguments> provideCardCostExamples() {
+        return Stream.of(
+                Arguments.of(Map.of(RED, 2, GREEN, 2, BLACK, 2, BLUE, 2, WHITE, 2), true),
+                Arguments.of(Map.of(RED, 5, GREEN, 2, BLACK, 3, BLUE, 4, WHITE, 3), true),
+                Arguments.of(Map.of(RED, 0, GREEN, 0, BLACK, 0, BLUE, 0, WHITE, 6), true),
+                Arguments.of(Map.of(RED, 1, GREEN, 4, BLACK, 3, BLUE, 4, WHITE, 1), true),
+                Arguments.of(Map.of(RED, 3, GREEN, 4, BLACK, 1, BLUE, 1, WHITE, 4), false));
+    }
+@ParameterizedTest
+@MethodSource("provideCarPlayerExamples")
+    void checkPlayerNeedUseCoins(Map<Color,Integer> selectedCardCost){
+        //when
+        Player player = mock(Player.class);
+        when(player.getCardsUser()).thenReturn(Map.of(RED, 2, GREEN, 2, BLACK, 3, BLUE, 4, WHITE, 3));
+        CardDealer cardDealer = new CardDealer(null,player);
+        // then
+        cardDealer.checkPlayerNeedUseCoins(selectedCardCost);
+
     }
 
-    private List<Map<Color, Integer>> createListCardCostExample() {
-        List<Map<Color, Integer>> cardCostList = new ArrayList<>();
-        cardCostList.add(Map.of(Color.RED, 2, Color.GREEN, 2, Color.BLACK, 2,
-                Color.BLUE, 2, Color.WHITE, 2));
-        cardCostList.add(Map.of(Color.RED, 1, Color.GREEN, 4, Color.BLACK, 3,
-                Color.BLUE, 4, Color.WHITE, 1));
-        cardCostList.add(Map.of(Color.RED, 3, Color.GREEN, 4, Color.BLACK, 1,
-                Color.BLUE, 1, Color.WHITE, 1));
-        return cardCostList;
-    }
+
+//    @ParameterizedTest
+//    @MethodSource("provideCoinExamples")
+//    void useGoldCoinsInsteadOfColor_dataFromParametrizedTest_resultFromData(int goldCoinsUser, int goldCoinsOnTable, int goldCoinUsed,Color color,  int colorCoinsOnTable,
+//                                                                            int colorCoinsPosesByPlayer,Map<Color,Integer>CoinsOnTableMap,Map<Color,Integer>CoinsUser) {
+//        //given
+//        Player player = mock(Player.class);
+//        when(player.getNumberOfSelectedColorCoins(GOLD)).thenReturn(goldCoinsUser);
+//        when(player.getCoinsUser()).thenReturn(Map.of(color, colorCoinsPosesByPlayer, GOLD, goldCoinsUser));
+//        Table table = mock(Table.class);
+//        when(table.getNumberOfSelectedColorCoins(GOLD)).thenReturn(goldCoinsOnTable);
+//        when(table.getCoinsOnTableMap()).thenReturn(Map.of(color, colorCoinsOnTable, GOLD, goldCoinsOnTable));
+//        CardDealer cardDealer = new CardDealer(table, player);
+//        //when
+//        cardDealer.useColorAndGoldCoins(color, goldCoinUsed, colorCoinsOnTable, colorCoinsPosesByPlayer);
+//        //then
+//        Assertions.assertEquals(CoinsOnTableMap,table.getCoinsOnTableMap());
+//        Assertions.assertEquals(CoinsUser,player.getCoinsUser());
+//    }
+//
+//    private static Stream<Arguments> provideCoinExamples() {
+//        return Stream.of(
+//                Arguments.of(2,1,1,RED,4, 2, Map.of(RED, 6, GOLD, 2),Map.of(RED, 0,  GOLD, 1)));
+//    }
 }

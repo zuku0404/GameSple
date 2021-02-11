@@ -1,4 +1,4 @@
-package converter;
+package old_file;
 
 import card.Card;
 import com.google.gson.Gson;
@@ -12,6 +12,10 @@ import java.util.List;
 import java.util.Map;
 
 public class JsonFileCreator {
+    public static void main(String[] args) {
+        JsonFileCreator jsonFileCreator = new JsonFileCreator();
+        jsonFileCreator.convert();
+    }
     private Gson gson;
 
     public void convert() {

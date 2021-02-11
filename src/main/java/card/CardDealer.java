@@ -16,7 +16,7 @@ public class CardDealer {
     }
 
     public void buySelectedCard(Card selectedCard) throws InvalidValueException {
-        Map<Color, Integer> selectedCardCost = selectedCard.getCardCost();
+        Map<Color, Integer> selectedCardCost = selectedCard.getCost();
         if (hasPlayerEnoughColorPointsToBuyCard(selectedCardCost)) {
             checkPlayerNeedUseCoins(selectedCardCost);
         } else {
@@ -47,7 +47,7 @@ public class CardDealer {
         }
     }
 
-    void useOnlyColorCoins(Color color, int coins, int colorCoinsOnTable, int coinsNeededToBuyCard) {
+    private void useOnlyColorCoins(Color color, int coins, int colorCoinsOnTable, int coinsNeededToBuyCard) {
         currentPlayer.setNumberOfSelectedColorCoins(color, coins);
         table.setNumberOfSelectedColorCoins(color, colorCoinsOnTable + coinsNeededToBuyCard);
     }

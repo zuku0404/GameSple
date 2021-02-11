@@ -21,7 +21,7 @@ public class Table {
         this.heroesOnTableMap = heroesOnTableMap;
     }
 
-    public void removeHero (int numberOfHero) {
+    public void removeHero(int numberOfHero) {
         heroesOnTableMap.remove(numberOfHero);
     }
 
@@ -34,11 +34,13 @@ public class Table {
             cardsOnTableMap.remove(selectedCardNumber);
         }
     }
-    public int getNumberOfSelectedColorCoins(Color color){
+
+    public int getNumberOfSelectedColorCoins(Color color) {
         return coinsOnTableMap.get(color);
     }
-    public void setNumberOfSelectedColorCoins(Color color, int numberOfCoins){
-        coinsOnTableMap.replace(color,numberOfCoins);
+
+    public void setNumberOfSelectedColorCoins(Color color, int numberOfCoins) {
+        coinsOnTableMap.replace(color, numberOfCoins);
     }
 }
 

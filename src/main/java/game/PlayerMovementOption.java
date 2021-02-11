@@ -13,6 +13,7 @@ import message.Messenger;
 import player.Player;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class PlayerMovementOption {
@@ -24,51 +25,37 @@ public class PlayerMovementOption {
         this.table = table;
     }
 
-    public void selectMove(Player currentPlayer, int numberOfDecision) {
-        boolean isActionCompleteSuccessful = false;
-        while (!isActionCompleteSuccessful) {
+    public boolean selectMove(Player currentPlayer, Optional<Movements> movement) {
+        if (movement.isPresent()) {
+            Movements move = movement.get();
             try {
-                if (numberOfDecision == 1) {
-                    isActionCompleteSuccessful = buyCardAction(currentPlayer);
+                if (move.equals(Movements.BUY_CARD)) {
+                    return buyCardAction(currentPlayer);
 
-                } else if (numberOfDecision == 2) {
-                    int minimalNumberCoinsOnStackOnTable = 1;
-                    int amountCoinsToChangeFromSingleStack = 1;
-                    int maxAmountCoinsToTakeInSingleMove = 3;
-                    Messenger.display(Message.TAKE_THREE_COIN_QUESTION);
+                } else if (move.equals(Movements.TAKE_TREE_DIFFERENT_COINS)) {
+                    return takeCoinsAction(currentPlayer,move);
 
-                    isActionCompleteSuccessful = takeCoinsAction(currentPlayer, minimalNumberCoinsOnStackOnTable,
-                            amountCoinsToChangeFromSingleStack, maxAmountCoinsToTakeInSingleMove);
+                } else if (move.equals(Movements.TAKE_TWO_SAME_COINS)) {
+                    return takeCoinsAction(currentPlayer,move);
 
-                } else if (numberOfDecision == 3) {
-                    int minimalNumberCoinsOnStackOnTable = 4;
-                    int amountCoinsToChangeFromSingleStack = 2;
-                    int maxAmountCoinsToTakeInSingleMove = 2;
-                    Messenger.display(Message.TAKE_TWO_COIN_QUESTION);
+                } else if (move.equals(Movements.BUY_HERO)) {
+                    return isPlayerBuyHero(currentPlayer);
 
-                    isActionCompleteSuccessful = takeCoinsAction(currentPlayer, minimalNumberCoinsOnStackOnTable,
-                            amountCoinsToChangeFromSingleStack, maxAmountCoinsToTakeInSingleMove);
+                } else if (move.equals(Movements.RESERVE_CARD)) {
+                    return isPlayerReservedCard(currentPlayer);
 
-                } else if (numberOfDecision == 4) {
-                    isActionCompleteSuccessful = isPlayerBuyHero(currentPlayer);
-
-                } else if (numberOfDecision == 5) {
-                    isActionCompleteSuccessful = isPlayerReservedCard(currentPlayer);
-
-                } else if (numberOfDecision == 6) {
-                    isActionCompleteSuccessful = isPlayerBuyReservedCard(currentPlayer);
-
-                } else {
-                    throw new InvalidValueException("Action not exist");
+                } else if (move.equals(Movements.BUY_RESERVED_CARD)) {
+                    return isPlayerBuyReservedCard(currentPlayer);
                 }
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
-                numberOfDecision = GameStatistic.showDecisionOption();
             }
         }
+        return false;
     }
 
-    private boolean isPlayerBuyReservedCard(Player currentPlayer) throws InvalidActionException, InvalidValueException {
+    private boolean isPlayerBuyReservedCard(Player currentPlayer) throws
+            InvalidActionException, InvalidValueException {
         if (currentPlayer.getReservedCardUser().size() == 0) {
             throw new InvalidActionException("you do not have any cards reserved");
         } else {
@@ -109,37 +96,40 @@ public class PlayerMovementOption {
     }
 
     private void buyHeroAction(Player currentPlayer) throws InvalidValueException {
-            int numberOfHero = scanner.nextInt();
-            Hero selectedHero = table.getHeroesOnTableMap().get(numberOfHero);
-            if(selectedHero==null){
-                throw new InvalidValueException("incorrect number of hero");
-            }
-            HeroDealer heroDealer = new HeroDealer(currentPlayer, table, selectedHero, numberOfHero);
-            heroDealer.takeHeroByPlayer();
+        int numberOfHero = scanner.nextInt();
+        Hero selectedHero = table.getHeroesOnTableMap().get(numberOfHero);
+        if (selectedHero == null) {
+            throw new InvalidValueException("incorrect number of hero");
         }
+        HeroDealer heroDealer = new HeroDealer(currentPlayer, table, selectedHero, numberOfHero);
+        heroDealer.takeHeroByPlayer();
+    }
 
     private boolean buyCardAction(Player currentPlayer) throws InvalidValueException {
         Messenger.display(Message.BUY_CARD_QUESTION);
         CardDealer cardDealer = new CardDealer(table, currentPlayer);
         int selectedCardNumber = scanner.nextInt();
         Card selectedCard = table.getCardsOnTableMap().get(selectedCardNumber);
-        cardDealer.buySelectedCard(selectedCard);
-        currentPlayer.takeCard(selectedCard);
-        table.replaceSelectedCard(selectedCard, selectedCardNumber);
-        return true;
+        if (selectedCard != null) {
+            cardDealer.buySelectedCard(selectedCard);
+            currentPlayer.takeCard(selectedCard);
+            table.replaceSelectedCard(selectedCard, selectedCardNumber);
+            return true;
+        } else {
+            throw new InvalidValueException("Number of Action not exist");
+        }
     }
 
-    private boolean takeCoinsAction(Player currentPlayer, int minimalNumberCoinsOnStackOnTable, int amountCoinsToChangeFromSingleStack,
-                                    int maxAmountCoinsToTakeInSingleMove) throws InvalidValueException {
+    private boolean takeCoinsAction(Player currentPlayer, Movements move) throws InvalidValueException {
         System.out.println(mapIdOfColors.entrySet());
-        CoinsTaker coinsTaker = new CoinsTaker(minimalNumberCoinsOnStackOnTable, amountCoinsToChangeFromSingleStack,
-                maxAmountCoinsToTakeInSingleMove, table, currentPlayer);
+        CoinsTaker coinsTaker = new CoinsTaker(table, currentPlayer, move);
         coinsTaker.selectAndTakeCoins();
         return true;
     }
 
     private void reserveCardAction(Player currentPlayer, int numberOfReservedCards) {
-        CoinsTaker goldCoinTaker = new CoinsTaker(currentPlayer, table);
+        Movements move = Movements.RESERVE_CARD;
+        CoinsTaker goldCoinTaker = new CoinsTaker(table, currentPlayer,move);
         int numberOfCardWhichYouWantReserved = scanner.nextInt();
         Card selectedCard = table.getCardsOnTableMap().get(numberOfCardWhichYouWantReserved);
         currentPlayer.getReservedCardUser().put(numberOfReservedCards + 1, selectedCard);
