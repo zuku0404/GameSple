@@ -21,7 +21,7 @@ public enum Message {
             "\nyou have %s points " +
             "\nyour cards: %s " +
             "\nyour coins: %s" +
-            "\nnumber of hero %s :" +
+            "\nyour number of hero: %s " +
             "\nyour reserved cards: "),
     DASHED_LINE ("-------------------------------------------------------------------------------------------------"),
     CARD_HEADER_TABLE( " %10s %10s %10s %10s %30s"),
@@ -31,7 +31,8 @@ public enum Message {
     TABLE_STATISTIC_FIRST_PART("\nTABLE: " +
             "\nCoins on the table: %s " +
             "\nCards on the table:\n "),
-    TABLE_STATISTIC_SECOND_PART("Heroes on the table");
+    TABLE_STATISTIC_SECOND_PART("Heroes on the table"),
+    WELCOME ("Welcome to the Splendor game!\nPlease enter the number of players (2-4): ");
 
 
     public String getText() {

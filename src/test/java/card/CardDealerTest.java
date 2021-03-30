@@ -1,7 +1,6 @@
 package card;
 
 import coin.Color;
-import game.Table;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -10,15 +9,25 @@ import org.junit.jupiter.params.provider.MethodSource;
 import player.Player;
 
 import java.util.Map;
+import java.util.stream.Stream;
+
+import static coin.Color.*;
+import static org.mockito.Mockito.*;
 
 
-public class CardDealerTest {
+class CardDealerTest {
 
-    @Test
-    public void hasPlayerEnoughColorPointsToBuyCard_dataFromMock_returnTrue() {
+    @ParameterizedTest
+    @MethodSource("provideCardCostExamples")
+    void hasPlayerEnoughColorPointsToBuyCard_dataFromParametrizedTest_resultFromData(Map<Color, Integer> cardCost, boolean expected) {
         //given
-        Player currentPlayer = createPlayerMock();
-        CardDealer cardDealer = new CardDealer(null, currentPlayer);
+        Player player = mock(Player.class);
+        when(player.getTotalNumberOfEachColors()).thenReturn(Map.of(RED, 2, GREEN, 2, BLACK, 3, BLUE, 4, WHITE, 3, GOLD, 3));
+
+        Card card = mock(Card.class);
+        when(card.getCost()).thenReturn(cardCost);
+
+        CardDealer cardDealer = new CardDealer(null, player);
         //when
 
         boolean result = cardDealer.hasPlayerEnoughColorPointsToBuyCard(cardCost);
@@ -36,40 +45,4 @@ public class CardDealerTest {
                 Arguments.of(Map.of(RED, 1, GREEN, 4, BLACK, 3, BLUE, 4, WHITE, 1), true),
                 Arguments.of(Map.of(RED, 3, GREEN, 4, BLACK, 1, BLUE, 1, WHITE, 4), false));
     }
-@ParameterizedTest
-@MethodSource("provideCarPlayerExamples")
-    void checkPlayerNeedUseCoins(Map<Color,Integer> selectedCardCost){
-        //when
-        Player player = mock(Player.class);
-        when(player.getCardsUser()).thenReturn(Map.of(RED, 2, GREEN, 2, BLACK, 3, BLUE, 4, WHITE, 3));
-        CardDealer cardDealer = new CardDealer(null,player);
-        // then
-        cardDealer.checkPlayerNeedUseCoins(selectedCardCost);
-
-    }
-
-
-//    @ParameterizedTest
-//    @MethodSource("provideCoinExamples")
-//    void useGoldCoinsInsteadOfColor_dataFromParametrizedTest_resultFromData(int goldCoinsUser, int goldCoinsOnTable, int goldCoinUsed,Color color,  int colorCoinsOnTable,
-//                                                                            int colorCoinsPosesByPlayer,Map<Color,Integer>CoinsOnTableMap,Map<Color,Integer>CoinsUser) {
-//        //given
-//        Player player = mock(Player.class);
-//        when(player.getNumberOfSelectedColorCoins(GOLD)).thenReturn(goldCoinsUser);
-//        when(player.getCoinsUser()).thenReturn(Map.of(color, colorCoinsPosesByPlayer, GOLD, goldCoinsUser));
-//        Table table = mock(Table.class);
-//        when(table.getNumberOfSelectedColorCoins(GOLD)).thenReturn(goldCoinsOnTable);
-//        when(table.getCoinsOnTableMap()).thenReturn(Map.of(color, colorCoinsOnTable, GOLD, goldCoinsOnTable));
-//        CardDealer cardDealer = new CardDealer(table, player);
-//        //when
-//        cardDealer.useColorAndGoldCoins(color, goldCoinUsed, colorCoinsOnTable, colorCoinsPosesByPlayer);
-//        //then
-//        Assertions.assertEquals(CoinsOnTableMap,table.getCoinsOnTableMap());
-//        Assertions.assertEquals(CoinsUser,player.getCoinsUser());
-//    }
-//
-//    private static Stream<Arguments> provideCoinExamples() {
-//        return Stream.of(
-//                Arguments.of(2,1,1,RED,4, 2, Map.of(RED, 6, GOLD, 2),Map.of(RED, 0,  GOLD, 1)));
-//    }
 }

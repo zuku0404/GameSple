@@ -7,7 +7,6 @@ import exceptions.InvalidValueException;
 import hero.Hero;
 import hero.HeroSetter;
 import message.Message;
-import message.Messenger;
 import player.Player;
 import player.PlayersCreator;
 
@@ -36,7 +35,10 @@ public class Game {
         boolean isPlayerScoredSufficientPointsToWin = false;
         while (!isPlayerScoredSufficientPointsToWin)
             for (Player currentPlayer : players) {
-                isPlayerScoredSufficientPointsToWin = makeSingleMove(currentPlayer);
+                if (makeSingleMove(currentPlayer)) {
+                    isPlayerScoredSufficientPointsToWin = true;
+                }
+                currentPlayer.setTotalNumberOfEachColors();
             }
         showFinalScore();
     }
@@ -53,8 +55,11 @@ public class Game {
         gameStatistic.showTableStatus(table);
         boolean isActionCompleteSuccessful = false;
         while (!isActionCompleteSuccessful) {
-            Optional<Movements> movement = GameStatistic.showDecisionOption();
-            isActionCompleteSuccessful = playerMovementOption.selectMove(currentPlayer, movement);
+            Optional<Movement> movement = GameStatistic.showDecisionOption();
+            if (movement.isPresent()) {
+                Movement move = movement.get();
+                isActionCompleteSuccessful = playerMovementOption.selectMove(currentPlayer, move);
+            }
         }
         return checkIsFinalRound(currentPlayer);
     }

@@ -27,7 +27,7 @@ public class Player {
                 totalNumberOfEachColors.put(color,coinsUser.get(color));
             }
             else {
-                cardsUser.put(color, 4);
+                cardsUser.put(color, 0);
                 coinsUser.put(color, 0);
                 totalNumberOfEachColors.put(color, cardsUser.get(color) + coinsUser.get(color));
             }
@@ -54,5 +54,19 @@ public class Player {
     }
     public void setNumberOfSelectedColorCoins(Color color, int numberOfCoins){
         coinsUser.replace(color,numberOfCoins);
+    }
+
+    public void setTotalNumberOfEachColors() {
+        for (Color color : Color.values()) {
+            if (color == Color.GOLD) {
+                totalNumberOfEachColors.put(color, coinsUser.get(color));
+            } else {
+                totalNumberOfEachColors.put(color, cardsUser.get(color) + coinsUser.get(color));
+            }
+        }
+    }
+
+    public Map<Color, Integer> getTotalNumberOfEachColors() {
+        return totalNumberOfEachColors;
     }
 }

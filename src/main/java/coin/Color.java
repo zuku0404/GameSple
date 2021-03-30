@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public enum Color {
-    WHITE ("white"),
+    WHITE("white"),
     BLUE("blue"),
     BLACK("black"),
     RED("red"),
@@ -16,7 +16,7 @@ public enum Color {
     private String colorName;
 
 
-    Color(String colorName){
+    Color(String colorName) {
         this.colorName = colorName;
     }
     public static List<Color> getColorsWithoutGold() {

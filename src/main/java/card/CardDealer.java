@@ -6,6 +6,8 @@ import game.Table;
 import player.Player;
 import java.util.Map;
 
+import static coin.Color.*;
+
 public class CardDealer {
     private Table table;
     private Player currentPlayer;
@@ -26,7 +28,7 @@ public class CardDealer {
 
     void checkPlayerNeedUseCoins(Map<Color, Integer> selectedCardCost) {
         Map<Color, Integer> playerCards = currentPlayer.getCardsUser();
-        for (Color color : Color.getColorsWithoutGold()) {
+        for (Color color : getColorsWithoutGold()) {
             int coinsNeededToBuyCard = selectedCardCost.get(color) - playerCards.get(color);
             if (coinsNeededToBuyCard > 0) {
                 useCoinsToBuyCard(color, coinsNeededToBuyCard);
@@ -40,8 +42,7 @@ public class CardDealer {
         int colorCoinsOnTable = table.getNumberOfSelectedColorCoins(color);
 
         if (coins < 0) {
-            useColorCoinsWithGoldCoins(color, coins, colorCoinsOnTable, colorCoinsPosesByPlayer);
-
+            useColorAndGoldCoins(color, coins, colorCoinsOnTable, colorCoinsPosesByPlayer);
         } else {
             useOnlyColorCoins(color, coins, colorCoinsOnTable, colorCoinsPosesByPlayer);
         }
@@ -52,22 +53,22 @@ public class CardDealer {
         table.setNumberOfSelectedColorCoins(color, colorCoinsOnTable + coinsNeededToBuyCard);
     }
 
-    void useColorCoinsWithGoldCoins(Color color, int coins, int colorCoinsOnTable, int colorCoinsPosesByPlayer) {
-        int goldCoinsOnTable = table.getNumberOfSelectedColorCoins(Color.GOLD);
-        int goldCoinsPlayer = currentPlayer.getNumberOfSelectedColorCoins(Color.GOLD);
-        int goldCoinsOnTableAfterTransaction = goldCoinsOnTable + Math.abs(coins);
-        int goldCoinsPlayerAfterTransaction = goldCoinsPlayer - Math.abs(coins);
+     private void useColorAndGoldCoins(Color color, int goldenCoinsUsed, int colorCoinsOnTable, int colorCoinsPosesByPlayer) {
+        int goldCoinsOnTable = table.getNumberOfSelectedColorCoins(GOLD);
+        int goldCoinsPlayer = currentPlayer.getNumberOfSelectedColorCoins(GOLD);
+        int goldCoinsOnTableAfterTransaction = goldCoinsOnTable + Math.abs(goldenCoinsUsed);
+        int goldCoinsPlayerAfterTransaction = goldCoinsPlayer - Math.abs(goldenCoinsUsed);
 
-        table.setNumberOfSelectedColorCoins(Color.GOLD, goldCoinsOnTableAfterTransaction);
+        table.setNumberOfSelectedColorCoins(GOLD, goldCoinsOnTableAfterTransaction);
         table.setNumberOfSelectedColorCoins(color, colorCoinsOnTable + colorCoinsPosesByPlayer);
-        currentPlayer.setNumberOfSelectedColorCoins(Color.GOLD, goldCoinsPlayerAfterTransaction);
+        currentPlayer.setNumberOfSelectedColorCoins(GOLD, goldCoinsPlayerAfterTransaction);
         currentPlayer.setNumberOfSelectedColorCoins(color, 0);
     }
 
     boolean hasPlayerEnoughColorPointsToBuyCard(Map<Color, Integer> cardCost) {
         Map<Color, Integer> playerTotalNumberEachColors = currentPlayer.getTotalNumberOfEachColors();
-        int numberOfGoldCoins = playerTotalNumberEachColors.get(Color.GOLD);
-        for (Color color : Color.getColorsWithoutGold()) {
+        int numberOfGoldCoins = playerTotalNumberEachColors.get(GOLD);
+        for (Color color : getColorsWithoutGold()) {
             int playerTotalNumberOfSelectedColor = playerTotalNumberEachColors.get(color);
             int selectedCardColorCost = cardCost.get(color);
             int subtractColorCardCostWithColorPosesByPlayer = selectedCardColorCost - playerTotalNumberOfSelectedColor;
@@ -79,6 +80,7 @@ public class CardDealer {
                     return false;
                 }
             }
+
         }
         return true;
     }

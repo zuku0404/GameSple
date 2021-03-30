@@ -8,13 +8,14 @@ import exceptions.InvalidActionException;
 import exceptions.InvalidValueException;
 import hero.Hero;
 import hero.HeroDealer;
-import message.Message;
-import message.Messenger;
 import player.Player;
 
 import java.util.Map;
-import java.util.Optional;
 import java.util.Scanner;
+
+import static game.Movement.*;
+import static message.Message.*;
+import static message.Messenger.*;
 
 public class PlayerMovementOption {
     private Table table;
@@ -25,33 +26,28 @@ public class PlayerMovementOption {
         this.table = table;
     }
 
-    public boolean selectMove(Player currentPlayer, Optional<Movements> movement) {
-        if (movement.isPresent()) {
-            Movements move = movement.get();
-            try {
-                if (move.equals(Movements.BUY_CARD)) {
+    public boolean selectMove(Player currentPlayer, Movement move) {
+        try {
+            switch (move) {
+                case BUY_CARD:
                     return buyCardAction(currentPlayer);
-
-                } else if (move.equals(Movements.TAKE_TREE_DIFFERENT_COINS)) {
-                    return takeCoinsAction(currentPlayer,move);
-
-                } else if (move.equals(Movements.TAKE_TWO_SAME_COINS)) {
-                    return takeCoinsAction(currentPlayer,move);
-
-                } else if (move.equals(Movements.BUY_HERO)) {
+                case TAKE_TREE_DIFFERENT_COINS:
+                    return takeCoinsAction(currentPlayer, move);
+                case TAKE_TWO_SAME_COINS:
+                    return takeCoinsAction(currentPlayer, move);
+                case BUY_HERO:
                     return isPlayerBuyHero(currentPlayer);
-
-                } else if (move.equals(Movements.RESERVE_CARD)) {
+                case RESERVE_CARD:
                     return isPlayerReservedCard(currentPlayer);
-
-                } else if (move.equals(Movements.BUY_RESERVED_CARD)) {
+                case BUY_RESERVED_CARD:
                     return isPlayerBuyReservedCard(currentPlayer);
-                }
-            } catch (Exception ex) {
-                System.out.println(ex.getMessage());
             }
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
         return false;
+
     }
 
     private boolean isPlayerBuyReservedCard(Player currentPlayer) throws
@@ -69,9 +65,13 @@ public class PlayerMovementOption {
         CardDealer cardDealer = new CardDealer(table, currentPlayer);
         int cardNumber = scanner.nextInt();
         Card selectedCard = currentPlayer.getReservedCardUser().get(cardNumber);
-        cardDealer.buySelectedCard(selectedCard);
-        currentPlayer.takeCard(selectedCard);
-        currentPlayer.getReservedCardUser().remove(cardNumber);
+        if (selectedCard != null) {
+            cardDealer.buySelectedCard(selectedCard);
+            currentPlayer.takeCard(selectedCard);
+            currentPlayer.getReservedCardUser().remove(cardNumber);
+        } else {
+            throw new InvalidValueException("incorrect card number ");
+        }
     }
 
     private boolean isPlayerReservedCard(Player currentPlayer) throws InvalidActionException {
@@ -99,7 +99,7 @@ public class PlayerMovementOption {
         int numberOfHero = scanner.nextInt();
         Hero selectedHero = table.getHeroesOnTableMap().get(numberOfHero);
         if (selectedHero == null) {
-            throw new InvalidValueException("incorrect number of hero");
+            throw new InvalidValueException("incorrect hero number ");
         }
         HeroDealer heroDealer = new HeroDealer(currentPlayer, table, selectedHero, numberOfHero);
         heroDealer.takeHeroByPlayer();
@@ -120,7 +120,7 @@ public class PlayerMovementOption {
         }
     }
 
-    private boolean takeCoinsAction(Player currentPlayer, Movements move) throws InvalidValueException {
+    private boolean takeCoinsAction(Player currentPlayer, Movement move) throws InvalidValueException {
         System.out.println(mapIdOfColors.entrySet());
         CoinsTaker coinsTaker = new CoinsTaker(table, currentPlayer, move);
         coinsTaker.selectAndTakeCoins();
@@ -128,8 +128,7 @@ public class PlayerMovementOption {
     }
 
     private void reserveCardAction(Player currentPlayer, int numberOfReservedCards) {
-        Movements move = Movements.RESERVE_CARD;
-        CoinsTaker goldCoinTaker = new CoinsTaker(table, currentPlayer,move);
+        CoinsTaker goldCoinTaker = new CoinsTaker(table, currentPlayer, RESERVE_CARD);
         int numberOfCardWhichYouWantReserved = scanner.nextInt();
         Card selectedCard = table.getCardsOnTableMap().get(numberOfCardWhichYouWantReserved);
         currentPlayer.getReservedCardUser().put(numberOfReservedCards + 1, selectedCard);

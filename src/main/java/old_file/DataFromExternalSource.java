@@ -1,7 +1,6 @@
 package old_file;
 
 import card.Card;
-import coin.Color;
 import hero.Hero;
 
 import java.util.ArrayList;

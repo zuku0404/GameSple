@@ -2,7 +2,7 @@ package coin;
 
 import exceptions.InvalidActionException;
 import exceptions.InvalidValueException;
-import game.Movements;
+import game.Movement;
 import game.Table;
 import lombok.extern.slf4j.Slf4j;
 import message.Message;
@@ -21,7 +21,7 @@ public class CoinsTaker {
     private ConditionsCoins conditionsCoins;
     private int maxNumberCoinsPosesByPlayer;
 
-    public CoinsTaker(Table table, Player currentPlayer, Movements move) {
+    public CoinsTaker(Table table, Player currentPlayer, Movement move) {
         this.table = table;
         this.currentPlayer = currentPlayer;
         conditionsCoins = new ConditionsCoins(move);

@@ -2,8 +2,7 @@ package game;
 
 import card.Card;
 import hero.Hero;
-import message.Message;
-import message.Messenger;
+
 import player.Player;
 
 import java.util.Map;
@@ -51,8 +50,8 @@ public class GameStatistic {
         Messenger.display(Message.DASHED_LINE);
     }
 
-    public static Optional<Movements> showDecisionOption() {
-        Messenger.display(Message.DECISION_WINDOW);
-        return Movements.choseMove(scanner.nextInt());
+    public static Optional<Movement> showDecisionOption() {
+        display(DECISION_WINDOW);
+        return Movement.choseMove(scanner.nextInt());
     }
 }

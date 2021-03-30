@@ -2,7 +2,7 @@ package game;
 
 import java.util.Optional;
 
-public enum Movements {
+public enum Movement {
     BUY_CARD(1),
     TAKE_TREE_DIFFERENT_COINS(2),
     TAKE_TWO_SAME_COINS(3),
@@ -16,9 +16,9 @@ public enum Movements {
         this.number = number;
     }
 
-    public static Optional<Movements> choseMove (int decisionNumber) {
-        for (Movements value : values()) {
-            if(value.number == decisionNumber){
+    public static Optional<Movement> choseMove(int decisionNumber) {
+        for (Movement value : values()) {
+            if (value.number == decisionNumber) {
                 return Optional.of(value);
             }
         }
