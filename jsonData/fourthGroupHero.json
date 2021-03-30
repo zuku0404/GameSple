@@ -1,0 +1,112 @@
+[
+  {
+    "costHero": {
+      "RED": 3,
+      "BLUE": 3,
+      "GREEN": 3,
+      "WHITE": 0,
+      "BLACK": 0
+    },
+    "points": 3,
+    "imageCard": "pictures/Hero1.JPG"
+  },
+  {
+    "costHero": {
+      "RED": 0,
+      "BLUE": 3,
+      "GREEN": 0,
+      "WHITE": 3,
+      "BLACK": 3
+    },
+    "points": 3,
+    "imageCard": "pictures/Hero2.JPG"
+  },
+  {
+    "costHero": {
+      "RED": 0,
+      "BLUE": 0,
+      "GREEN": 0,
+      "WHITE": 4,
+      "BLACK": 4
+    },
+    "points": 3,
+    "imageCard": "pictures/Hero3.JPG"
+  },
+  {
+    "costHero": {
+      "RED": 0,
+      "BLUE": 4,
+      "GREEN": 0,
+      "WHITE": 4,
+      "BLACK": 0
+    },
+    "points": 3,
+    "imageCard": "pictures/Hero4.JPG"
+  },
+  {
+    "costHero": {
+      "RED": 0,
+      "BLUE": 4,
+      "GREEN": 4,
+      "WHITE": 0,
+      "BLACK": 0
+    },
+    "points": 3,
+    "imageCard": "pictures/Hero5.JPG"
+  },
+  {
+    "costHero": {
+      "RED": 0,
+      "BLUE": 3,
+      "GREEN": 3,
+      "WHITE": 3,
+      "BLACK": 0
+    },
+    "points": 3,
+    "imageCard": "pictures/Hero6.JPG"
+  },
+  {
+    "costHero": {
+      "RED": 3,
+      "BLUE": 0,
+      "GREEN": 0,
+      "WHITE": 3,
+      "BLACK": 3
+    },
+    "points": 3,
+    "imageCard": "pictures/Hero7.JPG"
+  },
+  {
+    "costHero": {
+      "RED": 3,
+      "BLUE": 0,
+      "GREEN": 3,
+      "WHITE": 0,
+      "BLACK": 3
+    },
+    "points": 3,
+    "imageCard": "pictures/Hero8.JPG"
+  },
+  {
+    "costHero": {
+      "RED": 4,
+      "BLUE": 0,
+      "GREEN": 0,
+      "WHITE": 0,
+      "BLACK": 4
+    },
+    "points": 3,
+    "imageCard": "pictures/Hero9.JPG"
+  },
+  {
+    "costHero": {
+      "RED": 4,
+      "BLUE": 0,
+      "GREEN": 4,
+      "WHITE": 0,
+      "BLACK": 0
+    },
+    "points": 3,
+    "imageCard": "pictures/Hero10.JPG"
+  }
+]

@@ -1,0 +1,522 @@
+[
+  {
+    "color": "BLACK",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 1,
+      "BLUE": 1,
+      "GREEN": 1,
+      "WHITE": 1,
+      "BLACK": 0
+    },
+    "image": "pictures/black11.JPG"
+  },
+  {
+    "color": "BLACK",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 1,
+      "BLUE": 2,
+      "GREEN": 1,
+      "WHITE": 1,
+      "BLACK": 0
+    },
+    "image": "pictures/black12.JPG"
+  },
+  {
+    "color": "BLACK",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 1,
+      "BLUE": 2,
+      "GREEN": 0,
+      "WHITE": 2,
+      "BLACK": 0
+    },
+    "image": "pictures/black13.JPG"
+  },
+  {
+    "color": "BLACK",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 3,
+      "BLUE": 0,
+      "GREEN": 1,
+      "WHITE": 0,
+      "BLACK": 1
+    },
+    "image": "pictures/black14.JPG"
+  },
+  {
+    "color": "BLACK",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 1,
+      "BLUE": 0,
+      "GREEN": 2,
+      "WHITE": 0,
+      "BLACK": 0
+    },
+    "image": "pictures/black15.JPG"
+  },
+  {
+    "color": "BLACK",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 0,
+      "BLUE": 0,
+      "GREEN": 2,
+      "WHITE": 2,
+      "BLACK": 0
+    },
+    "image": "pictures/black16.JPG"
+  },
+  {
+    "color": "BLACK",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 0,
+      "BLUE": 0,
+      "GREEN": 3,
+      "WHITE": 0,
+      "BLACK": 0
+    },
+    "image": "pictures/black17.JPG"
+  },
+  {
+    "color": "BLACK",
+    "points": 1,
+    "group": 1,
+    "cost": {
+      "RED": 0,
+      "BLUE": 4,
+      "GREEN": 0,
+      "WHITE": 0,
+      "BLACK": 0
+    },
+    "image": "pictures/black18.JPG"
+  },
+  {
+    "color": "BLUE",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 1,
+      "BLUE": 0,
+      "GREEN": 1,
+      "WHITE": 1,
+      "BLACK": 1
+    },
+    "image": "pictures/blue11.JPG"
+  },
+  {
+    "color": "BLUE",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 2,
+      "BLUE": 0,
+      "GREEN": 1,
+      "WHITE": 1,
+      "BLACK": 1
+    },
+    "image": "pictures/blue12.JPG"
+  },
+  {
+    "color": "BLUE",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 2,
+      "BLUE": 0,
+      "GREEN": 2,
+      "WHITE": 1,
+      "BLACK": 0
+    },
+    "image": "pictures/blue13.JPG"
+  },
+  {
+    "color": "BLUE",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 1,
+      "BLUE": 1,
+      "GREEN": 3,
+      "WHITE": 0,
+      "BLACK": 0
+    },
+    "image": "pictures/blue14.JPG"
+  },
+  {
+    "color": "BLUE",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 0,
+      "BLUE": 0,
+      "GREEN": 0,
+      "WHITE": 1,
+      "BLACK": 2
+    },
+    "image": "pictures/blue15.JPG"
+  },
+  {
+    "color": "BLUE",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 0,
+      "BLUE": 0,
+      "GREEN": 2,
+      "WHITE": 0,
+      "BLACK": 2
+    },
+    "image": "pictures/blue16.JPG"
+  },
+  {
+    "color": "BLUE",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 0,
+      "BLUE": 0,
+      "GREEN": 0,
+      "WHITE": 0,
+      "BLACK": 3
+    },
+    "image": "pictures/blue17.JPG"
+  },
+  {
+    "color": "BLUE",
+    "points": 1,
+    "group": 1,
+    "cost": {
+      "RED": 4,
+      "BLUE": 0,
+      "GREEN": 0,
+      "WHITE": 0,
+      "BLACK": 0
+    },
+    "image": "pictures/blue18.JPG"
+  },
+  {
+    "color": "WHITE",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 1,
+      "BLUE": 1,
+      "GREEN": 1,
+      "WHITE": 0,
+      "BLACK": 1
+    },
+    "image": "pictures/white11.JPG"
+  },
+  {
+    "color": "WHITE",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 1,
+      "BLUE": 1,
+      "GREEN": 2,
+      "WHITE": 0,
+      "BLACK": 1
+    },
+    "image": "pictures/white12.JPG"
+  },
+  {
+    "color": "WHITE",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 0,
+      "BLUE": 2,
+      "GREEN": 2,
+      "WHITE": 0,
+      "BLACK": 1
+    },
+    "image": "pictures/white13.JPG"
+  },
+  {
+    "color": "WHITE",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 0,
+      "BLUE": 1,
+      "GREEN": 0,
+      "WHITE": 3,
+      "BLACK": 1
+    },
+    "image": "pictures/white14.JPG"
+  },
+  {
+    "color": "WHITE",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 2,
+      "BLUE": 0,
+      "GREEN": 0,
+      "WHITE": 0,
+      "BLACK": 1
+    },
+    "image": "pictures/white15.JPG"
+  },
+  {
+    "color": "WHITE",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 0,
+      "BLUE": 2,
+      "GREEN": 0,
+      "WHITE": 0,
+      "BLACK": 2
+    },
+    "image": "pictures/white16.JPG"
+  },
+  {
+    "color": "WHITE",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 0,
+      "BLUE": 3,
+      "GREEN": 0,
+      "WHITE": 0,
+      "BLACK": 0
+    },
+    "image": "pictures/white17.JPG"
+  },
+  {
+    "color": "WHITE",
+    "points": 1,
+    "group": 1,
+    "cost": {
+      "RED": 0,
+      "BLUE": 0,
+      "GREEN": 4,
+      "WHITE": 0,
+      "BLACK": 0
+    },
+    "image": "pictures/white18.JPG"
+  },
+  {
+    "color": "GREEN",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 1,
+      "BLUE": 1,
+      "GREEN": 0,
+      "WHITE": 1,
+      "BLACK": 1
+    },
+    "image": "pictures/green11.JPG"
+  },
+  {
+    "color": "GREEN",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 1,
+      "BLUE": 1,
+      "GREEN": 0,
+      "WHITE": 1,
+      "BLACK": 2
+    },
+    "image": "pictures/green12.JPG"
+  },
+  {
+    "color": "GREEN",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 2,
+      "BLUE": 1,
+      "GREEN": 0,
+      "WHITE": 0,
+      "BLACK": 2
+    },
+    "image": "pictures/green13.JPG"
+  },
+  {
+    "color": "GREEN",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 0,
+      "BLUE": 3,
+      "GREEN": 1,
+      "WHITE": 1,
+      "BLACK": 0
+    },
+    "image": "pictures/green14.JPG"
+  },
+  {
+    "color": "GREEN",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 0,
+      "BLUE": 1,
+      "GREEN": 0,
+      "WHITE": 2,
+      "BLACK": 0
+    },
+    "image": "pictures/green15.JPG"
+  },
+  {
+    "color": "GREEN",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 2,
+      "BLUE": 2,
+      "GREEN": 0,
+      "WHITE": 0,
+      "BLACK": 0
+    },
+    "image": "pictures/green16.JPG"
+  },
+  {
+    "color": "GREEN",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 3,
+      "BLUE": 0,
+      "GREEN": 0,
+      "WHITE": 0,
+      "BLACK": 0
+    },
+    "image": "pictures/green17.JPG"
+  },
+  {
+    "color": "GREEN",
+    "points": 1,
+    "group": 1,
+    "cost": {
+      "RED": 0,
+      "BLUE": 0,
+      "GREEN": 0,
+      "WHITE": 0,
+      "BLACK": 4
+    },
+    "image": "pictures/green18.JPG"
+  },
+  {
+    "color": "RED",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 0,
+      "BLUE": 1,
+      "GREEN": 1,
+      "WHITE": 1,
+      "BLACK": 1
+    },
+    "image": "pictures/red11.JPG"
+  },
+  {
+    "color": "RED",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 0,
+      "BLUE": 1,
+      "GREEN": 1,
+      "WHITE": 2,
+      "BLACK": 1
+    },
+    "image": "pictures/red12.JPG"
+  },
+  {
+    "color": "RED",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 0,
+      "BLUE": 0,
+      "GREEN": 1,
+      "WHITE": 2,
+      "BLACK": 2
+    },
+    "image": "pictures/red13.JPG"
+  },
+  {
+    "color": "RED",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 1,
+      "BLUE": 0,
+      "GREEN": 0,
+      "WHITE": 1,
+      "BLACK": 3
+    },
+    "image": "pictures/red14.JPG"
+  },
+  {
+    "color": "RED",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 0,
+      "BLUE": 2,
+      "GREEN": 1,
+      "WHITE": 0,
+      "BLACK": 0
+    },
+    "image": "pictures/red15.JPG"
+  },
+  {
+    "color": "RED",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 2,
+      "BLUE": 0,
+      "GREEN": 0,
+      "WHITE": 2,
+      "BLACK": 0
+    },
+    "image": "pictures/red16.JPG"
+  },
+  {
+    "color": "RED",
+    "points": 0,
+    "group": 1,
+    "cost": {
+      "RED": 0,
+      "BLUE": 0,
+      "GREEN": 0,
+      "WHITE": 3,
+      "BLACK": 0
+    },
+    "image": "pictures/red17.JPG"
+  },
+  {
+    "color": "RED",
+    "points": 1,
+    "group": 1,
+    "cost": {
+      "RED": 0,
+      "BLUE": 0,
+      "GREEN": 0,
+      "WHITE": 4,
+      "BLACK": 0
+    },
+    "image": "pictures/red18.JPG"
+  }
+]
