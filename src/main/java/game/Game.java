@@ -12,6 +12,8 @@ import player.PlayersCreator;
 
 import java.util.*;
 
+import static message.Messenger.*;
+
 public class Game {
     private Player[] players;
     private Table table;
@@ -44,9 +46,9 @@ public class Game {
     }
 
     private void showFinalScore() {
-        Messenger.display(Message.FINAL_SCORE_TAG);
+        display(Message.FINAL_SCORE_TAG);
         for (Player player : players) {
-            Messenger.display(Message.FINAL_SCORE_PLAYER,player.getPlayerNumber(),player.getPoints());
+            display(Message.FINAL_SCORE_PLAYER, player.getPlayerNumber(), player.getPoints());
         }
     }
 
@@ -67,7 +69,7 @@ public class Game {
     private boolean checkIsFinalRound(Player currentPlayer) {
         int sufficientNumberPointsToWin = 15;
         if (currentPlayer.getPoints() >= sufficientNumberPointsToWin) {
-            Messenger.display(Message.FINAL_ROUND_TAG);
+            display(Message.FINAL_ROUND_TAG);
             return true;
         }
         return false;

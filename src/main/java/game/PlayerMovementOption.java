@@ -55,7 +55,7 @@ public class PlayerMovementOption {
         if (currentPlayer.getReservedCardUser().size() == 0) {
             throw new InvalidActionException("you do not have any cards reserved");
         } else {
-            Messenger.display(Message.BUY_RESERVED_CARD_QUESTION);
+            display(BUY_RESERVED_CARD_QUESTION);
             buyReservedCardAction(currentPlayer);
             return true;
         }
@@ -79,7 +79,7 @@ public class PlayerMovementOption {
         if (numberOfReservedCards >= 3) {
             throw new InvalidActionException("too many reserved card");
         } else {
-            Messenger.display(Message.RESERVE_CARD_QUESTION);
+            display(RESERVE_CARD_QUESTION);
             reserveCardAction(currentPlayer, numberOfReservedCards);
             return true;
         }
@@ -89,7 +89,7 @@ public class PlayerMovementOption {
         if (table.getHeroesOnTableMap().isEmpty()) {
             throw new InvalidActionException("all heroes have been bought");
         } else {
-            Messenger.display(Message.TAKE_HERO_QUESTION);
+            display(TAKE_HERO_QUESTION);
             buyHeroAction(currentPlayer);
             return true;
         }
@@ -106,7 +106,7 @@ public class PlayerMovementOption {
     }
 
     private boolean buyCardAction(Player currentPlayer) throws InvalidValueException {
-        Messenger.display(Message.BUY_CARD_QUESTION);
+        display(BUY_CARD_QUESTION);
         CardDealer cardDealer = new CardDealer(table, currentPlayer);
         int selectedCardNumber = scanner.nextInt();
         Card selectedCard = table.getCardsOnTableMap().get(selectedCardNumber);

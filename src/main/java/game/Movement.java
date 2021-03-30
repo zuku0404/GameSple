@@ -12,7 +12,7 @@ public enum Movement {
 
     private int number;
 
-    Movements(int number) {
+    Movement(int number) {
         this.number = number;
     }
 

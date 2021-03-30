@@ -13,19 +13,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static game.Movement.*;
+
 @Slf4j
 public class CoinsTaker {
+    private static final int maxNumberCoinsPosesByPlayer = 10;
+
     private Player currentPlayer;
     private Table table;
     private Scanner scanner = new Scanner(System.in);
     private ConditionsCoins conditionsCoins;
-    private int maxNumberCoinsPosesByPlayer;
+
 
     public CoinsTaker(Table table, Player currentPlayer, Movement move) {
         this.table = table;
         this.currentPlayer = currentPlayer;
-        conditionsCoins = new ConditionsCoins(move);
-        this.maxNumberCoinsPosesByPlayer = conditionsCoins.getMaxNumberCoinsPosesByPlayer();
+        conditionsCoins = ConditionsCoins.getConditionCoins(move);
     }
 
     public void takeGoldCoin() {

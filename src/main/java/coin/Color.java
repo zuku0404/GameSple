@@ -1,9 +1,8 @@
 package coin;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+import static java.util.stream.Collectors.*;
 
 public enum Color {
     WHITE("white"),
@@ -19,21 +18,19 @@ public enum Color {
     Color(String colorName) {
         this.colorName = colorName;
     }
+
     public static List<Color> getColorsWithoutGold() {
-        List<Color> colorsWithoutGold = new ArrayList<>();
-        for (Color color : Color.values()) {
-            if (color != Color.GOLD) {
-                colorsWithoutGold.add(color);
-            }
-        }
-        return colorsWithoutGold;
+        return Arrays.stream(values())
+                .filter(color -> color != GOLD)
+                .collect(toList());
     }
+
     public static Map<Integer, Color> createMapIdOfColors() {
         Map<Integer, Color> map = new HashMap<>();
+
         int idNumber = 1;
-        for (Color color : Color.values()) {
-            map.put(idNumber, color);
-            idNumber++;
+        for (Color color : values()) {
+            map.put(idNumber++, color);
         }
         return map;
     }

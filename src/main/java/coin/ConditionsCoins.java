@@ -5,10 +5,10 @@ import lombok.Getter;
 
 @Getter
 public class ConditionsCoins {
-    private int minimalNumberCoinsOnStackOnTable;
-    private int amountCoinsToChangeFromSingleStack;
-    private int maxAmountCoinsToTakeInSingleMove;
-    private int maxNumberCoinsPosesByPlayer = 10;
+    private final int minimalNumberCoinsOnStackOnTable;
+    private final int amountCoinsToChangeFromSingleStack;
+    private final int maxAmountCoinsToTakeInSingleMove;
+
 
     private ConditionsCoins(int minimalNumberCoinsOnStackOnTable, int amountCoinsToChangeFromSingleStack, int maxAmountCoinsToTakeInSingleMove) {
         this.minimalNumberCoinsOnStackOnTable = minimalNumberCoinsOnStackOnTable;
