@@ -1,0 +1,41 @@
+The game is intended for 2-4 players
+
+The goal of the game is to score 15 or more points (the game ends when one of the players gets the required number of
+points - however, players who started the game after the player who scored the required number of points have the
+option to finish the round. Then, based on the number of points, the player with the most points wins).
+
+Points are earned for buying a hero (3 points) and cards (each card has a certain number of points).
+
+There are 6 different colors of coins on the table (the gold color is equivalent to a coin of any color) and 12 cards
+(4 cards from each group in 5 colors - without the gold color). The color of the card is the same as the color of the
+coin. The number of coins placed depends on the number of players.
+
+Each player can have a maximum of 10 coins and any number of cards and heroes.
+
+Each player in a single move can take 3 different coins from the table among 5 colors (no gold color can be selected,
+a gold coin is charged only when booking the card), as long as the given coins are available. The player takes fewer
+number of coins if there are fewer coins of different colors on the table or when the player has 10 coins when
+collecting coins
+
+Another option is for the player to collect 2 coins of the same color at once, but the number of coins on the table
+of a given color must be at least 4 and the player cannot have more than 8 coins.
+
+The third option is to buy a card - each card has the appropriate cost, number of colors required to buy it. We buy
+a card with coins and cards (the sum of colors counts). When a player buys a given card, it is permanently assigned
+to him, the player never loses it. When buying a card, the number of cards of a given color is considered first, if
+it is not enough, then the coins of the appropriate color are checked, if there are too few of these, it is checked
+whether the player has enough gold coins to compensate for the difference.
+If the card chosen by the player has been bought, it is sent to him permanently, and the used coins are returned
+to the table. In place of the taken card, a new card from a given group appears (until the cards from a given group
+are reset)
+
+The fourth option is to buy a hero - to buy a hero, you need to have the appropriate number of cards (each hero has
+the required number of cards of the appropriate color, after buying a hero, the player does not lose any cards)
+
+Another option is to book a card - the player can reserve a selected card which he can buy later, but he doesn't
+have to. A card reserved by a player is not usable until the player purchases it. When booking a card, the player
+receives 1 gold coin if it is on the table. A player can reserve a maximum of 3 cards. A reserved card goes to the
+section reserved for a given player and a new card from the appropriate group appears on the table instead.
+
+The last option is to buy a reserved card - if the player has the opportunity, i.e. acquires the appropriate number
+of colors required to buy the card, he can buy it at any time and the card is permanently given to the player.
